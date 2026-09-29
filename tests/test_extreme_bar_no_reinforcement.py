@@ -34,9 +34,10 @@ def get_plain_concrete_section() -> ConcreteSection:
 
 
 def test_extreme_bar_raises_clear_error_without_reinforcement():
-    """Regression test: extreme_bar() used to raise an unguarded IndexError
-    (list index out of range) on a section with no lumped reinforcement. It
-    should raise a descriptive ValueError instead.
+    """Tests that extreme_bar() raises a descriptive error without reinforcement.
+
+    It used to raise an unguarded IndexError (list index out of range) on a
+    section with no lumped reinforcement.
     """
     conc_sec = get_plain_concrete_section()
     assert conc_sec.reinf_geometries_lumped == []
@@ -46,9 +47,10 @@ def test_extreme_bar_raises_clear_error_without_reinforcement():
 
 
 def test_moment_interaction_diagram_default_control_points_raise_clear_error():
-    """moment_interaction_diagram()'s default control points include an 'fy'
-    point, which is not meaningful without reinforcement. This should
-    surface as the same descriptive ValueError, not an IndexError.
+    """Tests the default control points of moment_interaction_diagram().
+
+    They include an 'fy' point, which is not meaningful without reinforcement.
+    This should surface as the same descriptive ValueError, not an IndexError.
     """
     conc_sec = get_plain_concrete_section()
 
